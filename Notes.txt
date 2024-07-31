@@ -1,0 +1,282 @@
+DotNet is a product used to create various kinds of appliation.
+-desktop appliation.
+-web appliation.
+-mobile appliation.
+
+C# - 	Objected oriented 
+	Platform Independent
+	cross language Independent.
+30+ language support by dotnet
+__________________________________________________________________
+		Access specifiers 
+private 
+internal
+protected
+protected internal
+public 
+
+By default scope of class is private.
+We cannot declare a class as private , protected and protected internal.
+only internal and public can be declared.
+Protected internal is accesible in same project and to derived class.
+__________________________________________________________________
+		static method
+In c++ we can access static method with classname 
+and pointer 
+and object
+
+In C# static member can only be accessed with the instance/object.
+non static can access the static method
+but vice versa is not possible. an object is required.
+(static cannot access non static member.)
+__________________________________________________________________
+	static property
+memory will be allocated for static property when the class is loaded in memory.
+class can be loaded by creating pointer. 
+__________________________________________________________________
+3 type of variables 
+1) local variable.	created by function which will die.
+2) object variable. 	variable in Object are object variable.
+3) class variable.	variable in class are object variable.(static,out of function)
+__________________________________________________________________
+	Types of variables.
+non-static 	int x;
+static 		static int x;
+constant	const int x=3.14f;		//treated as static in application (one copy)
+readonly	readonly bool flag=true;	// can be created for each instance
+
+__________________________________________________________________
+	Operator Overloading 
+feature available in C#. similar to CPP.
+
+public static int operator +(int a,int b)
+{
+}
+
+public static bool operator ==(string a,string b)
+{
+}
+__________________________________________________________________
+
+we can also provide setter and getter variable as properties.
+
+public int Property
+{
+get {}
+set
+{
+// validating input and 
+// performing appropriate action.
+}
+}
+__________________________________________________________________
+"this" is a pointer/variable.
+C#.Net is a Safe programming language.
+C#.Net is a strongly typed Programming language.
+__________________________________________________________________
+5 types of Constructor in C#.
+default
+parameterised
+private
+copy 
+static 
+
+All first four are same as cpp.
+__________________________________________________________________
+static constructor
+a class can have static constructor also. and executed once in lifetime of application.
+static constructor must be parameterless.
+
+only for static constructor
+
+two method with same name but one is static and other non-static is not possible.
+
+static constructor should be used to initialize the static member of a class.
+__________________________________________________________________
+	Inheritance
+Through inheritance we can utilize the base class member without writing the same code.
+which follows DRY principle.
+
+public class HondaCity : Car
+{
+}
+public class Daughter : Female
+{
+}
+__________________________________________________________________
+	Types of Inheritance.
+single 			O-O
+multilevel		O-O-O
+hierarchial
+   _O__
+ _O_   _O_
+ O  O  O O
+__________________________________________________________________
+	Method Over-loading
+A method with Same name different signature(parameter) and return type has no significance. 
+which method will be executed will depend on user.
+__________________________________________________________________
+	Method Over-riding
+We can only over-ride virtual methods of the base class with overload keyword in the derived class.
+__________________________________________________________________
+	Abstract Classes
+A method with abstract keyword and which does not have a body is an Abstract class.
+A class containing abstract method is an Abstract class and we have to decalre it as abstract.
+
+An abstract class can have method as well as abstrct methods.
+__________________________________________________________________
+	Interface
+Interface is a user defined data type.
+Interface is an alternate to an abstract class.
+It will only contain methods without method body.
+
+the method which implements interface must provide the implementation of the methods.
+A class can have multiple interfaces as parent.
+__________________________________________________________________
+	Indexers in C#
+through this we can use a class as an array.
+or a class behaves like an array.
+
+Class Employee
+{
+private int Eno;
+private string name;
+private string designation;
+
+public object this[int index]			//throught this we declare indexers.
+{
+get
+{
+if(index==1) return Eno;
+if(index==2) return name;
+if(index==3) return designation;
+}
+set
+{
+if(index==1) Eno=value;
+if(index==2) name=value;
+if(index==3) desination=value;
+}
+}
+}
+
+class psp
+{
+Employee e=new Employee();
+e[1]=1;				//setting values using indexer
+e[2]="Suresh";
+e[3]="Manager";
+
+System.Console.WriteLine(e[1]);		//getting the values
+System.Console.WriteLine(e[2]);
+System.Console.WriteLine(e[3]);
+}
+__________________________________________________________________
+	Delegates
+Delegates is a pointer to a function.
+A delegates holds the reference to a function.
+A delegates stores the address of a function.
+Delegate can be created with delegate keyword. and can also create its instance.
+
+define - intantiate(reference) - call
+__________________________________________________________________
+	Anonymous method
+
+public delegate string GreetingsDelegate(string name);		//delegate
+
+GreetingDelegate obj = delegate(string name)			//anonymous function
+{
+return "Hello"+name;
+};
+__________________________________________________________________
+	lamda Expression  ( )=>{ }
+				( parameter_name )=>{ statements }
+
+GreetingDelegate obj = (name)=>{
+return "Hello"+name;
+};
+__________________________________________________________________
+	Predefined delegate 
+	Func , Action, Predicate
+Func - value returning method.
+Action - method is void.
+Predicate - returns bool value
+
+Func<int,int,float,double,double> obj1=(x,y,z)=>
+{
+return x+y+z;
+};
+__________________________________________________________________
+	String and StringBuilder 
+
+String are immutable.
+String builder are mutable 
+
+StringBuilder allocates a size of minimum 16 byte and its multiple of 16.
+
+StringBuilder str=new StringBuilder("Hello");
+str="Hello;
+__________________________________________________________________
+	Exception and Exception Handling
+
+Exception - these are the error which may be generated on runtime.
+
+Exception Handling - handling the exception which raised on runtime so that the application will not be terminated with unexpected behaviour and performing the appropriate action.
+
+try - we have to inclose the code which may generate and exception
+catch - we have to write the code which will handle the exception
+finally - this block will be executed everytime.
+
+Object 
+Exception
+SystemException 	ApplicationException(we will raise these exception to handle app.)
+IndexOutOfBoundE 	
+FormatException 
+ArithmaticE...
+	DivideByZeroE...
+	OverFlowE...
+__________________________________________________________________
+	Multithreading		using System.Threading;
+
+Multiple process can be executed without depending on any other process.
+
+In single threaded application the next process will wait until the first process won't be executed completely. 
+whereas In Multithreading any process will be executed at any time without any dependency.
+By MultiThreading we can maximum utilize of application.
+__________________________________________________________________
+		Collection classes (non generic collection classes) CSharp 1.0
+
+using System.Collections;
+
+Stack	Queue	LinkedList	ArrayList	HashTable	SortedList
+
+for int type data.
+Hastable stores key,value type data.
+	Unordered.
+__________________________________________________________________
+	Generic Collection 
+			(type safe)
+
+List<T> list =new List<T>();
+
+Hashtable<T> ht=new Hashtable<T>(key,value);
+__________________________________________________________________
+	Every class has four method
+
+GetHasCode()
+Equals()
+GetType()
+ToString()
+__________________________________________________________________
+	
+__________________________________________________________________
+
+__________________________________________________________________
+
+
+__________________________________________________________________
+__________________________________________________________________
+
+__________________________________________________________________
+
+__________________________________________________________________
